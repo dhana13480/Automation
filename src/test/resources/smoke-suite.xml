@@ -1,0 +1,38 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Web Automation Demo Smoke Test Suite">
+    <test name="Smoke Test">
+        <classes>
+          <class name="gov.michigan.obra.automation.InitiateLevelIFormForPASTest"/>
+           <!--<class name="gov.michigan.obra.automation.ReviewerPendAssessmentTest"/>
+         <class name="gov.michigan.obra.automation.CMHReqSubmiteToOBRAReviewerTest"/>
+             <class name="gov.michigan.obra.automation.OBRAReviewerDeterminationOnLevelIITest"/> 
+              <class name="gov.michigan.obra.automation.OnDemandPrintFormTest"/>
+              <class name="gov.michigan.obra.automation.OnDemandPrintAssesmentFormTest"/>
+              <class name="gov.michigan.obra.automation.OnDemandPrintDeterminationLetterTest"/> -->
+          
+           
+        </classes>
+    </test>
+</suite>
+
+
+<!-- 
+           <class name="gov.michigan.obra.automation.OnDemandPrintDeterminationLetterTest"/>
+           <class name="gov.michigan.obra.automation.OnDemandPrintFormTest"/>
+             <class name="gov.michigan.obra.automation.OBRAReviewerDeterminationOnLevelIITest"/>    
+           <class name="gov.michigan.obra.automation.OnDemandPrintFormTest"/>
+           OnDemandPrintAssesmentFormTest
+           <methods>
+           1.gov.michigan.obra.automation.ReviewerPendAssessmentTest
+           2.CMHReqSubmiteToOBRAReviewerTest
+           3.OBRAReviewerDeterminationOnLevelIITest
+           4.OnDemandPrintFormTest
+           5.OnDemandPrintAssesmentFormTest
+           6,7 .OnDemandPrintDeterminationLetterTest
+                    <include name="testValidMILogin"/>
+                </methods>-->
+            <!-- <class name="NavigationBarTest">
+                <methods>
+                    <include name="testNavigationBarOptionsVisibility" />
+                </methods>
+            </class> -->
