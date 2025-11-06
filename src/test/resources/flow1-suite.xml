@@ -1,0 +1,28 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Web Automation Flow 1 Suite" parallel="false" preserve-order="true">
+    <!-- <test name="Flow 1 Test - SSN1 Group">
+    	<parameter name="flowType" value="ssn1"/> 	
+    	<groups>
+    		<run>
+    			<include name="initiateLevelIForPAS"/>
+    		</run>
+    	</groups>
+    	<classes>
+         	<class name="gov.michigan.obra.automation.ConsumerCreationTest"/>
+          	<class name="gov.michigan.obra.automation.EditConsumerTest"/>
+          	<class name="gov.michigan.obra.automation.InitiateLevelIFormForPASTest"/>
+        </classes>
+    </test> -->
+    <test name="Flow 2 Test - SSN2 Group">
+    	<parameter name="flowType" value="ssn2"/> 	
+    	<groups>
+    		<run>
+    			<include name="initiateLevelIForPAS3877"/>
+    		</run>
+    	</groups>
+    	<classes>
+         	<class name="gov.michigan.obra.automation.ConsumerCreationTest"/>
+          	<class name="gov.michigan.obra.automation.InitiateLevelIFormForPASTest"/>
+        </classes>
+    </test>
+</suite>
