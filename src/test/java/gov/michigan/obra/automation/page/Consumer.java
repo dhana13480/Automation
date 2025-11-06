@@ -1,6 +1,5 @@
 package gov.michigan.obra.automation.page;
 
-import gov.michigan.obra.automation.common.constant.ApplicationConstants;
 import gov.michigan.obra.automation.page.testdata.UserData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -9,7 +8,6 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.net.SocketException;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +19,7 @@ public class Consumer extends BasePage{
     public Consumer(WebDriver driver) {
         super(driver);
     }
-    public void createConsumer(String userId, String password, UserData userData) throws InterruptedException {
+    public String createConsumer(String userId, String password, UserData userData) throws InterruptedException {
             /*inputUserId(userId);
             TimeUnit.SECONDS.sleep(3);
             inputUserPassword(password);
@@ -57,10 +55,23 @@ public class Consumer extends BasePage{
             clickOnConsumerModule();
             TimeUnit.SECONDS.sleep(5);
             clickOnCreateNewConsumer();
-            addConsumer(userData);
+            String SSN = addConsumer(userData);
             createLegalRep(userData);
+            return SSN;
 
     }
+    
+    public String createConsumerWithoutLegalRep(String userId, String password, UserData userData) throws InterruptedException {
+        TimeUnit.SECONDS.sleep(5);
+        clickOnOBRAMDHHS();
+        TimeUnit.SECONDS.sleep(5);
+        clickOnConsumerModule();
+        TimeUnit.SECONDS.sleep(5);
+        clickOnCreateNewConsumer();
+        String SSN = addConsumer(userData);
+        return SSN;
+
+}
 
     public void createConsumer(String userId, String password) throws InterruptedException {
         inputUserId(userId);
@@ -123,16 +134,18 @@ public class Consumer extends BasePage{
         TimeUnit.SECONDS.sleep(3);
 
 
-        
-     // Provide the full path(s) of the file(s) to upload    
+
+     // Provide the full path(s) of the file(s) to upload
      try {
     	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+    	    String projectDir = System.getProperty("user.dir");
+    	    String filePath = projectDir + "/src/test/resources/uploads/sample.pdf";
     	    WebElement fileInput = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("upload")));
-    	    fileInput.sendKeys("C:\\dev\\level_NSNI.pdf");
+    	    fileInput.sendKeys(filePath);
     	    System.out.println("fileInput: "+fileInput);
             saveButton(By.xpath("/html/body/app-root/div[2]/div/div/app-add-edit-legal-rep/div/section/form/div[9]/button[3]"));
             TimeUnit.SECONDS.sleep(2);
-            
+
     	} catch (Exception e) {
     	    System.out.println("Connection reset during upload. Retrying...");
     	    e.printStackTrace();
@@ -141,8 +154,9 @@ public class Consumer extends BasePage{
     	}
     }
 
-    private void addConsumer(UserData userData) throws InterruptedException {
-        sendKeys(By.xpath("//*[@id=\"ssn\"]"),userData.getSsn());
+    private String addConsumer(UserData userData) throws InterruptedException {
+    	String SSN = userData.getSsn();
+    	sendKeys(By.xpath("//*[@id=\"ssn\"]"), SSN);
         TimeUnit.SECONDS.sleep(5);
         sendKeys(By.xpath("//*[@id=\"add_firstname\"]"), userData.getFirstName());
         TimeUnit.SECONDS.sleep(2);
@@ -174,6 +188,8 @@ public class Consumer extends BasePage{
         saveButton(By.xpath("//*[@id=\"main_content\"]/app-add-edit-consumer/div/section/form/div[9]/button[1]"));
         TimeUnit.SECONDS.sleep(2);
         WebElement gender= driver.findElement(By.xpath("//*[@id=\"main_content\"]/app-consumer-detail/section/div[3]/div/div[1]/div/div[2]/dl/dd[1]"));
+        
+        return SSN;
        // Assertions.assertEquals(gender.getText(),"M");
 
     }
@@ -469,7 +485,7 @@ public class Consumer extends BasePage{
 
     }
 
-    public void editConsumer(UserData userData,String ssn) throws InterruptedException {
+    public String editConsumer(UserData userData,String ssn) throws InterruptedException {
         TimeUnit.SECONDS.sleep(5);
         clickOnOBRAMDHHS();
         TimeUnit.SECONDS.sleep(2);
@@ -477,6 +493,7 @@ public class Consumer extends BasePage{
         click(By.xpath("//*[@id=\"main_content\"]/app-menu-component/app-dashboard/div/section/div[2]/div/a"));
         TimeUnit.SECONDS.sleep(2);
 
+        System.out.println(ssn);
         sendKeys(By.xpath("//*[@id=\"ssn\"]"),ssn);
         TimeUnit.SECONDS.sleep(2);
 
@@ -488,7 +505,8 @@ public class Consumer extends BasePage{
         TimeUnit.SECONDS.sleep(2);
         clickDropdownMenuItems(By.xpath("//*[@id=\"main_content\"]/app-consumer-detail/section/div[2]/app-breadcrumbs/div[1]/button[2]"),By.xpath("//*[@id=\"main_content\"]/app-consumer-detail/section/div[2]/app-breadcrumbs/div[1]/ul/li[1]/a"));
 
-        clearSendKeys(By.xpath("//*[@id=\"ssn\"]"), userData.getSsn());
+        String newSSN = userData.getSsn();
+        clearSendKeys(By.xpath("//*[@id=\"ssn\"]"), newSSN);
         TimeUnit.SECONDS.sleep(2);
 
         clearSendKeys(By.xpath("//*[@id=\"add_firstname\"]"), userData.getFirstName());
@@ -512,7 +530,7 @@ public class Consumer extends BasePage{
         clickDropdownMenuItems(By.xpath("//*[@id=\"main_content\"]/app-view-legal-representative/div/section/div[2]/button[2]"),By.xpath("//*[@id=\"main_content\"]/app-view-legal-representative/div/section/div[2]/ul/div/li[3]/a"));
         TimeUnit.SECONDS.sleep(2);
 
-
+        return newSSN;
 
     }
 

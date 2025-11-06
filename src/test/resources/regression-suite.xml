@@ -1,25 +1,24 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="OBRA Web Automation Regression Test Suite">
-    <test name="User Registration" preserve-order="true" thread-count="1" verbose="10" parallel="false" configfailurepolicy="skip">
+    <test name="User Registration" preserve-order="true" thread-count="1" verbose="10" parallel="false">
         <classes>
 
-           <class name="gov.michigan.obra.automation.UserRegistrationTest"/>            
+            <class name="gov.michigan.obra.automation.UserRegistrationTest"/>
             <class name="gov.michigan.obra.automation.ConsumerCreationTest"/>
             <class name="gov.michigan.obra.automation.EditConsumerTest"/>
             <class name="gov.michigan.obra.automation.UpdateExistingUserProfileTest"/>
-             <class name="gov.michigan.obra.automation.InitiateLevelIFormForPASTest"/>
-			<class name="gov.michigan.obra.automation.LevelWorkflowPageTest"/>
-			<class name="gov.michigan.obra.automation.CompleteAssesmentTest"/>
-			<class name="gov.michigan.obra.automation.CmhObraReviwerFlowTest"/>
-			
-			
+            <class name="gov.michigan.obra.automation.InitiateLevelIFormForPASTest"/>
+            <class name="gov.michigan.obra.automation.LevelWorkflowPageTest"/>
+            <class name="gov.michigan.obra.automation.CompleteAssesmentTest"/>
+            <class name="gov.michigan.obra.automation.CmhObraReviwerFlowTest"/>
+
 
         </classes>
     </test>
-<!--    <test name="Consumer"  parallel="false" thread-count="1">
-        <classes>
-            <class name="gov.michigan.obra.automation.ConsumerCreationTest"/>
-            <class name="gov.michigan.obra.automation.EditConsumerTest"/>
-        </classes>
-    </test>-->
+    <!--    <test name="Consumer"  parallel="false" thread-count="1">
+            <classes>
+                <class name="gov.michigan.obra.automation.ConsumerCreationTest"/>
+                <class name="gov.michigan.obra.automation.EditConsumerTest"/>
+            </classes>
+        </test>-->
 </suite>

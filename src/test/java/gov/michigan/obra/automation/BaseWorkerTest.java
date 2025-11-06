@@ -20,13 +20,13 @@ public class BaseWorkerTest {
     private final WebDriverService driverService = new WebDriverFactory().getDriverService();
     private final Logger logger = LogManager.getLogger();
 
-    @BeforeSuite
+    @BeforeSuite(alwaysRun = true)
     public void oneTimeSetup() {
         logger.debug("Test execution browser: {}", BROWSER_NAME);
         logger.debug("Test execution environment: {}", EXECUTION_ENV_NAME);
     }
 
-    @BeforeClass
+    @BeforeClass(alwaysRun = true)
     public void openBrowser() {
         driverService.spinUpDriver();
         setDriver(driverService.getDriver());
@@ -49,7 +49,7 @@ public class BaseWorkerTest {
         return new UiComponentProvider(getDriver());
     }
 
-    @AfterClass
+    @AfterClass(alwaysRun = true)
     public void after() {
         driverService.closeDriver();
     }

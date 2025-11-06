@@ -28,13 +28,13 @@ public class BaseTest {
     private final WebDriverService driverService = new WebDriverFactory().getDriverService();
     private final Logger logger = LogManager.getLogger();
 
-    @BeforeSuite
+    @BeforeSuite(alwaysRun = true)
     public void oneTimeSetup() {
         logger.debug("Test execution browser: {}", BROWSER_NAME);
         logger.debug("Test execution environment: {}", EXECUTION_ENV_NAME);
     }
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void openBrowser() {
         driverService.spinUpDriver();
         setDriver(driverService.getDriver());
@@ -55,7 +55,7 @@ public class BaseTest {
 
     public void openPageByUrl(String url) {getDriver().get(url); }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void after() {
         driverService.closeDriver();
     }

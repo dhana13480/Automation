@@ -19,6 +19,6 @@ public class UserDataProvider {
 				.age(faker.number().digit()).salary(faker.number().digits(5)).department(faker.company().name())
 				.date(faker.date().birthday()).city(faker.address().city()).zip(faker.address().zipCode()).state(faker.address().zipCode()).phoneNumber(faker.phoneNumber().cellPhone())
 				.build();
-	}
+    }
 
 }
