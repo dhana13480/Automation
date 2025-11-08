@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 
 import static gov.michigan.obra.automation.common.constant.ApplicationConstants.*;
 import static gov.michigan.obra.automation.page.BasePage.driver;
+import static gov.michigan.obra.automation.util.Reader.getEnvironmentConfig;
 
 public class InitiateLevelIFormForPASTest extends BaseTest{
 
@@ -14,7 +15,7 @@ public class InitiateLevelIFormForPASTest extends BaseTest{
     public void testInitiateLevelIForPAS(UserData userData) throws InterruptedException {
         openPageByUrl(APPLICATION_URL);
         String winHandleMiLogin=pages().getMILogin().loginToTPQA(FAC_FU_USERNAME,FAC_FU_PASSWORD);
-        pages().getConsumer().initiateLevelIForPAS(userData,EDIT_CONSUMER_SSN);
+        pages().getConsumer().initiateLevelIForPAS(userData,getEnvironmentConfig("edit.consumer.with.legalrep.ssn"));
         // Close the OBRA window, if that window no more required
         driver.close();
         // Switch back to original browser MiLogin (winHandleMiLogin)

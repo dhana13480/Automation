@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
 
 import static gov.michigan.obra.automation.common.constant.ApplicationConstants.*;
 import static gov.michigan.obra.automation.page.BasePage.driver;
+import static gov.michigan.obra.automation.util.Reader.getEnvironmentConfig;
 import static gov.michigan.obra.automation.util.Write.setEnvironmentConfig;
 import static org.testng.Assert.assertEquals;
 
@@ -22,7 +23,8 @@ public class EditConsumerTest extends BaseTest{
         openPageByUrl(APPLICATION_URL);
         String winHandleMiLogin=pages().getMILogin().loginToTPQA(FAC_FU_USERNAME,FAC_FU_PASSWORD);
         //String winHandleMiLogin=pages().getMILogin().navigateToOBRAWindow();
-        String SSN = pages().getConsumer().editConsumer(userData,EDIT_CONSUMER_SSN);
+        System.out.println("passing ssn " + getEnvironmentConfig("edit.consumer.with.legalrep.ssn"));
+        String SSN = pages().getConsumer().editConsumer(userData,getEnvironmentConfig("edit.consumer.with.legalrep.ssn"));
         storeSSN(SSN);
         WebElement unlinkLegRep= driver.findElement(By.xpath("//*[@id=\"main_content\"]/app-consumer-detail/section/div[3]/div/div[2]/div/div[2]/div/div"));
         assertEquals("No Legal Representative Assigned",unlinkLegRep.getText());

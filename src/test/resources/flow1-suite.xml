@@ -13,7 +13,21 @@
           	<class name="gov.michigan.obra.automation.InitiateLevelIFormForPASTest"/>
         </classes>
     </test> -->
-    <test name="Flow 2 Test - SSN2 Group">
+    
+    <test name="Flow 2 Test - Initiate CMH flow">
+    	<parameter name="flowType" value="ssn1"/> 	
+    	<groups>
+    		<run>
+    			<include name="initiateCMHWorkflow1"/>
+    		</run>
+    	</groups>
+    	<classes>
+         	<class name="gov.michigan.obra.automation.ConsumerCreationTest"/>
+          	<class name="gov.michigan.obra.automation.CMHLevel1Workflow"/>
+        </classes>
+    </test>
+    
+    <!-- <test name="Flow 3 Test - SSN2 Group">
     	<parameter name="flowType" value="ssn2"/> 	
     	<groups>
     		<run>
@@ -24,5 +38,5 @@
          	<class name="gov.michigan.obra.automation.ConsumerCreationTest"/>
           	<class name="gov.michigan.obra.automation.InitiateLevelIFormForPASTest"/>
         </classes>
-    </test>
+    </test> -->
 </suite>

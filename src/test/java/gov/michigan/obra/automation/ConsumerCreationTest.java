@@ -37,7 +37,7 @@ public class ConsumerCreationTest extends BaseTest{
     }
     
     @Test(dataProvider = "User Data",dataProviderClass = UserDataProvider.class,
-    		groups = "initiateLevelIForPAS3877" )//(dataProvider = "User Data",dataProviderClass = UserDataProvider.class, groups = "Consumer Creation", priority = 1, description = "Verify that a facility user can login to the MI Login application using the correct credentials and create consumer with legal rep")
+    		groups = {"initiateLevelIForPAS3877","initiateCMHWorkflow1"} )//(dataProvider = "User Data",dataProviderClass = UserDataProvider.class, groups = "Consumer Creation", priority = 1, description = "Verify that a facility user can login to the MI Login application using the correct credentials and create consumer with legal rep")
     public void testCreateConsumerWithoutLegalRep(UserData userData, ITestContext context) throws InterruptedException, IOException {
     	String flowtype = context.getCurrentXmlTest().getParameter("flowType");
         openPageByUrl(APPLICATION_URL);
@@ -45,9 +45,6 @@ public class ConsumerCreationTest extends BaseTest{
         //String winHandleMiLogin=pages().getMILogin().navigateToOBRAWindow();
         String SSN = pages().getConsumer().createConsumerWithoutLegalRep(FAC_FU_USERNAME,FAC_FU_PASSWORD,userData);
         storeSSN(SSN, flowtype);
-//        WebElement legalRep=driver.findElement(By.xpath("//*[@id=\"main_content\"]/app-consumer-detail/section/div[3]/div/div[2]/div/div[2]/div/div/div[2]"));
-//        System.out.println("Consumer created and legalrep added successfully with ="+legalRep.getText());
-//        assertNotNull(legalRep.getText());
         // Close the OBRA window, if that window no more required
         driver.close();
         // Switch back to original browser MiLogin (winHandleMiLogin)
