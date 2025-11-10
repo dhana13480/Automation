@@ -1,6 +1,6 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="Web Automation Flow 1 Suite" parallel="false" preserve-order="true">
-    <!-- <test name="Flow 1 Test - SSN1 Group">
+<suite name="Web Automation Flow Suite" parallel="false" preserve-order="true">
+     <test name="Flow 1 and 2 Test - SSN1 Group">
     	<parameter name="flowType" value="ssn1"/> 	
     	<groups>
     		<run>
@@ -12,9 +12,9 @@
           	<class name="gov.michigan.obra.automation.EditConsumerTest"/>
           	<class name="gov.michigan.obra.automation.InitiateLevelIFormForPASTest"/>
         </classes>
-    </test> -->
+    </test> 
     
-    <test name="Flow 2 Test - Initiate CMH flow">
+    <test name="Flow 3 Test - Initiate CMH flow">
     	<parameter name="flowType" value="ssn1"/> 	
     	<groups>
     		<run>
@@ -26,8 +26,8 @@
           	<class name="gov.michigan.obra.automation.CMHLevel1Workflow"/>
         </classes>
     </test>
-    
-    <!-- <test name="Flow 3 Test - SSN2 Group">
+  
+    <test name="Flow 4 Test - SSN2 Group">
     	<parameter name="flowType" value="ssn2"/> 	
     	<groups>
     		<run>
@@ -38,5 +38,12 @@
          	<class name="gov.michigan.obra.automation.ConsumerCreationTest"/>
           	<class name="gov.michigan.obra.automation.InitiateLevelIFormForPASTest"/>
         </classes>
-    </test> -->
+    </test>
+      
+	<test name="Flow 5 Test - SSN2 Group">
+	    <parameter name="flowType" value="ssn2"/> 	
+	    <classes>
+	        <class name="gov.michigan.obra.automation.LevelWorkflowPageTest"/>
+	    </classes>
+	</test> 
 </suite>

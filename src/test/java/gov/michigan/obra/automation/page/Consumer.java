@@ -892,9 +892,9 @@ public class Consumer extends BasePage {
 				"//*[@id=\"main_content\"]/app-consumer-module/app-search-consumer/div/form/section/div[4]/div/a/button"));
 	}
 
-	private static String getCurrentDateTimeString() {
+/*	private static String getCurrentDateTimeString() {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss");
 		return LocalDateTime.now().format(formatter);
-	}
+	}*/
 
 }

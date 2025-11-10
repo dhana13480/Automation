@@ -21,8 +21,7 @@ public class OnDemandPrintAssesmentFormTest extends BaseTest{
     public void testOnDemandPrintForm() throws InterruptedException, IOException {
     	openPageByUrl(APPLICATION_URL);
         String obraPage =pages().getMILogin().loginToTPQA("cmhdeepaku1039", "Dec@2024");
-       try {
-    	
+       try {    	
         pages().getOnDemandPrintAssesmentForm().testPrintAssesmentForm();
         pages().getMILogin().miLoginTPLogOut(obraPage);
        }catch (Exception e) {

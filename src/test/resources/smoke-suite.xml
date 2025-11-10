@@ -2,9 +2,10 @@
 <suite name="Web Automation Demo Smoke Test Suite">
     <test name="Smoke Test">
         <classes>
+        <class name="gov.michigan.obra.automation.LevelWorkflowPageTest"/>
           <!-- <class name="gov.michigan.obra.automation.ConsumerCreationTest"/> -->
-          <!-- <class name="gov.michigan.obra.automation.EditConsumerTest"/> -->
-          <class name="gov.michigan.obra.automation.InitiateLevelIFormForPASTest"/>
+          <!-- <class name="gov.michigan.obra.automation.EditConsumerTest"/>
+          <class name="gov.michigan.obra.automation.LevelWorkflowPageTest"/>-->
            <!--<class name="gov.michigan.obra.automation.ReviewerPendAssessmentTest"/>
          <class name="gov.michigan.obra.automation.CMHReqSubmiteToOBRAReviewerTest"/>
              <class name="gov.michigan.obra.automation.OBRAReviewerDeterminationOnLevelIITest"/> 

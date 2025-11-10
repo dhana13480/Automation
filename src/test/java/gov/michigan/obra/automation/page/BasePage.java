@@ -21,6 +21,10 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class BasePage {
 
@@ -327,4 +331,35 @@ public class BasePage {
            return false;
        }
    }
+   
+	public  String getCurrentDateTimeString() {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss");
+		return LocalDateTime.now().format(formatter);
+	}
+	
+    public static String takeScreenshot( String fileName) {
+        // Define timestamp format for unique filenames
+        String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"));
+        
+        // Define screenshot folder path
+        String screenshotDir = System.getProperty("user.dir") + File.separator + "reports" + File.separator + "Screenshots";
+        File directory = new File(screenshotDir);
+        if (!directory.exists()) {
+            directory.mkdirs();
+        }
+
+        // Take the screenshot
+        File srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        String screenshotPath = screenshotDir + File.separator + fileName + "_" + timestamp + ".png";
+
+        try {
+            Files.copy(srcFile.toPath(), Paths.get(screenshotPath));
+            System.out.println("Screenshot saved: " + screenshotPath);
+        } catch (IOException e) {
+            System.err.println("Failed to save screenshot: " + e.getMessage());
+        }
+
+        return screenshotPath;
+    }
+
 }

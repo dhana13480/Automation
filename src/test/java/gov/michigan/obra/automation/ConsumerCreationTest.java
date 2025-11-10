@@ -15,7 +15,7 @@ import java.io.IOException;
 import static gov.michigan.obra.automation.util.Write.setEnvironmentConfig;
 import static gov.michigan.obra.automation.util.Reader.getEnvironmentConfig;
 
-
+//Flow 1
 public class ConsumerCreationTest extends BaseTest{
     @Test(dataProvider = "User Data",dataProviderClass = UserDataProvider.class,
     		groups = "initiateLevelIForPAS" )//(dataProvider = "User Data",dataProviderClass = UserDataProvider.class, groups = "Consumer Creation", priority = 1, description = "Verify that a facility user can login to the MI Login application using the correct credentials and create consumer with legal rep")
